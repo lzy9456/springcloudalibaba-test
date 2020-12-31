@@ -27,6 +27,33 @@
 * [**Alibaba Java Code Guidelines**] 阿里代码规范插件
 * [**Websocket**]
 
+### Quick Start
+
+1. 启动server
+   * nacos-server1.3.2(8848)
+   * seata-server1.4.0(8091)
+   * sentinel-dashboard1.8.0(8858)
+
+     > nacos\bin下新建sca.nacos-server1.3.2-start8848.bat \
+     shutdown.cmd && start startup -m standalone
+     
+     > seata-server-1.4.0目录新建sca.seata.server.start8091.bat \
+     md logs \
+     bin\seata-server -p 8091 -h 127.0.0.1 -m file
+
+     > sentinel-dashboard目录新建sca.sentinel-dashboard.start8858.bat \
+     java -Dserver.port=8858 -jar sentinel-dashboard-1.8.0.jar
+
+2. 启动项目
+   * dubbo-consumer，配置启动jvm参数(sentinel参数)
+     > -Djava.net.preferIPv4Stack=true -Dcsp.sentinel.api.port=8721 -Dcsp.sentinel.dashboard.server=localhost:8858 -Dproject.name=dubbo-consumer
+   * dubbo-provider
+     > -Djava.net.preferIPv4Stack=true -Dcsp.sentinel.api.port=8721 -Dcsp.sentinel.dashboard.server=localhost:8858 -Dproject.name=dubbo-provider 
+
+   * 依次启动dubbo-provider、dubbo-consumer、springcloud-gateway
+     > 
+
+3. 访问接口 <http://localhost:8081/say>
 
 
 
@@ -119,6 +146,8 @@
 
 ### Nacos discovery
     演示项目：dubbo-consumer(消费方)、dubbo-provider(提供方)
+    控制台: http://localhost:8848/
+    nacos\nacos
 1. 引入依赖（消费、提供方相同）（同时引入注册中心依赖 - 目前推荐nacos）
 
         <dependency>
@@ -155,6 +184,8 @@
 
 ### Sentinel
     演示项目：dubbo-consumer(消费方)、dubbo-provider(提供方)
+    控制台: http://localhost:8858/#/login
+    sentinel\sentinel
 1. 消费、提供方都引入依赖（同时引入注册中心依赖 - 目前推荐nacos）
 
         <dependency>
@@ -176,6 +207,7 @@
 
 ### Gateway
     演示项目：dubbo-consumer(消费方)、dubbo-provider(提供方)
+    网关：http://localhost:8190/say
 1. 引入依赖（同时引入注册中心依赖 - 目前推荐nacos）
 
          <!-- spring cloud alibaba nacos discovery -->
