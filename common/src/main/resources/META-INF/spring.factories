@@ -1,0 +1,4 @@
+#spring-boot-stater注入spring bean到其他引用工程
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.example.springaop.redis.RedisAspect,\
+com.example.springaop.log.LogAspect

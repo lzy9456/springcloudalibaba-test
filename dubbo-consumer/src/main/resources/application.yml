@@ -1,0 +1,56 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: dubbo-consumer
+
+#  main:
+#    allow-bean-definition-overriding: true
+  cloud:
+    nacos:
+      username: nacos
+      password: nacos
+      discovery:
+        server-addr: 127.0.0.1:8848
+  sentinel:
+    eager: true
+    web-context-unify: true
+    transport:
+      port: 8719
+      dashboard: localhost:8858
+
+
+#配置版本测试
+#demo:
+#  service:
+#    version: 1.0.0
+
+#embedded:
+#  zookeeper:
+#    port: 2181
+
+#dubbo zookeeper:
+#  registry:
+#    address: zookeeper://127.0.0.1:${embedded.zookeeper.port}
+#    file: ${user.home}/dubbo-cache/${spring.application.name}/dubbo.cache
+#    check: false
+#  consumer:
+#    check: false
+#    timeout: 30000
+
+
+#dubbo:
+dubbo:
+  cloud:
+    subscribed-services: dubbo-provider
+  protocols:
+    dubbo:
+      port: -1
+  consumer:
+    check: false
+    validation: true # 是否启用JSR303标准注解验证, 如果启用, 将对方法参数上的注解进行校验
+    version: 1.0.0 # 默认版本
+
+
+

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="my.dubbo.provider.dao.ExtUserMapper">
+
+    <select id="findByName" resultType="my.dubbo.provider.entity.User">
+        select
+        <include refid="my.dubbo.provider.dao.auto.UserMapper.Base_Column_List"/>
+        from user
+        <where> <!-- <where>标签自动去掉第一个语句and -->
+            <if test=" name!=null and name!='' ">
+                and name like concat('%', #{name}, '%')
+            </if>
+        </where>
+        LIMIT 10
+    </select>
+
+</mapper>

@@ -1,0 +1,162 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.example</groupId>
+    <artifactId>springcloudalibaba-test</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+<!--    <version>${revision}</version>-->
+    <packaging>pom</packaging>
+
+    <name>springcloudalibaba-test</name>
+
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.0.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <properties>
+        <revision>0.0.1-SNAPSHOT</revision>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+
+        <!-- spring cloud alibaba + dubbo -->
+        <spring-boot.version>2.3.2.RELEASE</spring-boot.version>
+        <spring-cloud-alibaba-dependencies.version>2.2.3.RELEASE</spring-cloud-alibaba-dependencies.version>
+        <spring-cloud-dependencies.version>Hoxton.SR8</spring-cloud-dependencies.version>
+        <dubbo.version>2.7.8</dubbo.version>
+
+
+        <!--       <fastjson.version>1.2.68</fastjson.version>-->
+        <guava.version>26.0-jre</guava.version>
+        <druid.version>1.1.6</druid.version>
+        <mybatis-plus.version>3.1.0</mybatis-plus.version>
+        <mybatis-plus-generator.version>3.4.0</mybatis-plus-generator.version>
+        <velocity-engine-core.version>2.2</velocity-engine-core.version>
+
+
+        <springfox-swagger2.version>2.9.2</springfox-swagger2.version>
+        <swagger-bootstrap-ui.version>1.9.6</swagger-bootstrap-ui.version>
+    </properties>
+
+
+    <dependencyManagement>
+        <dependencies>
+
+            <!-- spring boot dependencies -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud-dependencies.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba-dependencies.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${springfox-swagger2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>swagger-bootstrap-ui</artifactId>
+                <version>${swagger-bootstrap-ui.version}</version>
+            </dependency>
+
+
+            <!-- dubbo spring boot dependencies -->
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-dependencies-bom</artifactId>
+                <version>${dubbo.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- mybatisPlus核心库、mysql驱动、阿里数据库连接池 -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-generator</artifactId>
+                <version>${mybatis-plus-generator.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.velocity</groupId>
+                <artifactId>velocity-engine-core</artifactId>
+                <version>${velocity-engine-core.version}</version>
+            </dependency>
+
+            <!--         <dependency>-->
+            <!--             <groupId>mysql</groupId>-->
+            <!--             <artifactId>mysql-connector-java</artifactId>-->
+            <!--             <scope>runtime</scope>-->
+            <!--         </dependency>-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+
+
+            <!-- 工具类  other common tools  -->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+
+
+
+
+
+        </dependencies>
+    </dependencyManagement>
+
+    <!--    <repositories>-->
+    <!--        <repository>-->
+    <!--            <id>apache.snapshots.https</id>-->
+    <!--            <name>Apache Development Snapshot Repository</name>-->
+    <!--            <url>https://repository.apache.org/content/repositories/snapshots</url>-->
+    <!--            <releases>-->
+    <!--                <enabled>false</enabled>-->
+    <!--            </releases>-->
+    <!--            <snapshots>-->
+    <!--                <enabled>true</enabled>-->
+    <!--            </snapshots>-->
+    <!--        </repository>-->
+    <!--    </repositories>-->
+
+
+    <modules>
+        <module>dubbo-consumer</module>
+        <module>dubbo-provider</module>
+        <module>common</module>
+        <module>springcloud-gateway</module>
+    </modules>
+</project>

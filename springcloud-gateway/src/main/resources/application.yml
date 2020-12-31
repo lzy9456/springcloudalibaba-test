@@ -1,0 +1,37 @@
+server:
+  port: 8190
+
+spring:
+  application:
+    name: springcloud-gateway
+#处理 FeignClient 重名问题
+#  main:
+#    allow-bean-definition-overriding: true
+  cloud:
+    #nacos注册
+    nacos:
+      username: nacos
+      password: nacos
+      discovery:
+        server-addr: 127.0.0.1:8848
+    gateway:
+      #开启由注册中心提供地址路由
+      discovery:
+        locator:
+          enabled: true
+      #具体路由配置，代理路由url，filter等
+      routes:
+        - id: consumer_say_route
+#          uri: http://localhost:8081
+          uri: lb://dubbo-consumer
+          predicates:
+            - Path=/say/**
+
+        - id: consumer_say_route1
+#          uri: http://localhost:8081
+          uri: lb://dubbo-consumer
+          predicates:
+            - Path=/sayhello/**
+
+
+
