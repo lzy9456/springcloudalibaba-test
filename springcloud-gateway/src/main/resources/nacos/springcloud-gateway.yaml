@@ -1,0 +1,3 @@
+#导入nacos配置中心，公用配置
+user:
+  name: lizy

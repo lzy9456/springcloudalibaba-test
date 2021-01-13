@@ -1,0 +1,3 @@
+#导入nacos配置中心，开发配置
+server:
+  port: 8191

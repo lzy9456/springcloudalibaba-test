@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: springcloud-gateway
+  cloud:
+    #nacos.config配置中心
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+        prefix: springcloud-gateway #springcloud-gateway.yaml 本工程共享配置，dev、test、prod等共享
+        file-extension: yaml
+        shared-configs: default.yaml  #共享配置，用于所有工程共享配置？
+  profiles:
+    active: dev
