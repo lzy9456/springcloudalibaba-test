@@ -3,6 +3,7 @@ package my.dubbo.provider.entity.dto;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 
@@ -15,6 +16,7 @@ import java.io.Serializable;
  * @since 2020-10-18
  */
 @Data
+@Accessors(chain = true)
 @EqualsAndHashCode(callSuper = false)
 public class RoleDto extends Model<RoleDto> {
 
@@ -40,41 +42,6 @@ public class RoleDto extends Model<RoleDto> {
         return null;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public RoleDto setId(Integer id) {
-        this.id = id;
-        return this;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public RoleDto setName(String name) {
-        this.name = name;
-        return this;
-    }
-
-    public Integer getRoleType() {
-        return roleType;
-    }
-
-    public RoleDto setRoleType(Integer roleType) {
-        this.roleType = roleType;
-        return this;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public RoleDto setAddress(String address) {
-        this.address = address;
-        return this;
-    }
 
     public static RoleDto newRD() {
         return new RoleDto();

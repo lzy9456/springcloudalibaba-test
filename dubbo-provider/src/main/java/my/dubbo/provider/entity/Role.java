@@ -1,9 +1,11 @@
 package my.dubbo.provider.entity;
 
 import com.baomidou.mybatisplus.extension.activerecord.Model;
-import java.io.Serializable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
+
+import java.io.Serializable;
 
 /**
  * <p>
@@ -14,6 +16,7 @@ import lombok.EqualsAndHashCode;
  * @since 2020-10-18
  */
 @Data
+@Accessors(chain = true)
 @EqualsAndHashCode(callSuper = false)
 public class Role extends Model<Role> {
 

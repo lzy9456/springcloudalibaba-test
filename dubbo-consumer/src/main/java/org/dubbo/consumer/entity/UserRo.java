@@ -1,6 +1,7 @@
 package org.dubbo.consumer.entity;
 
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * @author _lizy
@@ -9,6 +10,7 @@ import lombok.Data;
  * @date 2020/12/19 14:59
  */
 @Data
+@Accessors(chain = true)
 public class UserRo {
     private Integer id;
     private String name;

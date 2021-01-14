@@ -2,6 +2,7 @@ package com.example.entity.result;
 
 import com.example.utils.BeanCovert;
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * @author _lizy
@@ -10,6 +11,7 @@ import lombok.Data;
  * @date 2020/12/19 15:06
  */
 @Data
+@Accessors(chain = true)
 public class Result<T> {
     public T data;
     public String code;

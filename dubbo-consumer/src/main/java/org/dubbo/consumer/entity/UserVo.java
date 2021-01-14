@@ -3,6 +3,7 @@ package org.dubbo.consumer.entity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 import javax.validation.constraints.NotNull;
 
@@ -13,6 +14,7 @@ import javax.validation.constraints.NotNull;
  * @date 2020/12/19 14:58
  */
 @Data
+@Accessors(chain = true)
 @ApiModel("用户信息vo")
 public class UserVo {
 
