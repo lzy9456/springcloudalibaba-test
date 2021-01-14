@@ -1,6 +1,5 @@
 package com.example.utils;
 
-import java.util.NoSuchElementException;
 import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -10,7 +9,10 @@ import java.util.function.Supplier;
 /**
  * @author _lizy
  * @version 1.0
- * @description 改进链式操作Optional Chain，ifPresent
+ * @description
+ *      改进链式操作Optional Chain.
+ *      ifPresent(),orElse()链式操作,builder模式
+ *      get()可以获取空值，去掉为空抛异常
  * @date 2020/11/27 22:04
  */
 public class OptionalC<T> {
@@ -87,17 +89,17 @@ public class OptionalC<T> {
     }
 
     /**
+     *
+     * 改为可以返回空, 去掉为空抛错
      * If a value is present in this {@code OptionalCollections}, returns the value,
      * otherwise throws {@code NoSuchElementException}.
      *
-     * @return the non-null value held by this {@code OptionalCollections}
-     * @throws NoSuchElementException if there is no value present
      * @see OptionalC#isPresent()
      */
     public T get() {
-        if (value == null) {
-            throw new NoSuchElementException("No value present");
-        }
+//        if (value == null) {
+//            throw new NoSuchElementException("No value present");
+//        }
         return value;
     }
 
