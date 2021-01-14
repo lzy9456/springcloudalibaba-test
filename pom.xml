@@ -158,5 +158,7 @@
         <module>dubbo-provider</module>
         <module>common</module>
         <module>springcloud-gateway</module>
+        <module>springcloudalibaba-rocketmq-produce</module>
+        <module>springcloudalibaba-rocketmq-consume</module>
     </modules>
 </project>

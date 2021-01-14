@@ -1,0 +1,38 @@
+server:
+  port: 28081
+
+spring:
+  application:
+    name: sca-rocketmq
+  cloud:
+    stream:
+      rocketmq:
+        binder:
+          # RocketMQ 服务器地址
+          name-server: 127.0.0.1:9876
+        binding:
+          output1:
+            producer:
+              group: binder-group
+              sync: true
+          output2:
+            producer:
+              group: txGroup
+              transactional: true
+          output3:
+            producer:
+              group: pull-group
+      bindings:
+        output1: {destination: test-topic, content-type: application/json}
+        output2: {destination: tx-topic, content-type: application/json}
+        output3: {destination: pull-topic, content-type: text/plain}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+

@@ -1,6 +1,6 @@
-### springcloud alibaba - helloworld项目
+# springcloud alibaba - helloworld项目
 
-### 技术栈目录
+## 技术栈目录
 
 * **Mybatis plus3.4.0**
 * **参数验证**
@@ -16,18 +16,20 @@
 
 
 * **Dubbo** (spring-cloud-starter-dubbo2.2.3 - dubbo2.7.8 分布式服务调用)
-* **Nacos** (spring-cloud-starter-alibaba-nacos-discovery2.2.3 - nacos-client1.3.3, discovery|config 分布式服务注册、配置)
+* **Nacos** (spring-cloud-starter-alibaba-nacos-discovery2.2.3 - nacos1.3.3, discovery|config 分布式服务注册、配置)
 * **Seata** (spring-cloud-starter-alibaba-seata2.2.3 - seata1.3.0分布式事务)
-* **Sentinel** (spring-cloud-starter-alibaba-sentinel2.2.3 - sentinel-core1.8.0, 分布式流控、高可用防护)
-* **Gateway** (spring-cloud-starter-gateway2.2.5 - gateway-core2.2.5 分布式网关)
-  
+* **Sentinel** (spring-cloud-starter-alibaba-sentinel2.2.3 - sentinel1.8.0, 分布式流控、高可用防护)
+* [**RocketMQ**] (spring-cloud-starter-stream-rocketmq2.2.3 - rocketmq4.4.0, 分布式消息队列)
+* **Gateway** (spring-cloud-starter-gateway2.2.5 - gateway2.2.5 分布式网关)
 
+
+* **Lombok**
 * [**Zookeeper**] 分布式服务注册备选
 * [**Websocket**]
 * [**Alibaba Java Code Guidelines**] 阿里代码规范插件
 * [**Websocket**]
 
-### Quick Start
+## Quick Start
 
 1. 启动server
    * nacos-server1.3.2(8848)
@@ -59,7 +61,7 @@
 
 
 
-### 介绍
+## 介绍
 ### Mybatis plus3.4.0
 * **集成Mybatis plus**
   
@@ -162,6 +164,24 @@
     > 1. 启动类加@EnableAutoConfiguration自动启用
 
 
+### Nacos config
+    演示项目：springcloud-gateway
+1. 引入依赖
+
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+        </dependency>
+
+2. 配置
+   > springcloud-gateway项目，新建bootstrap.yml
+   * Namespace
+   * Group
+   * Data Id -(${prefix}-${spring.profile.active}.${file-extension})
+
+3. 注解
+   > 1. @RefreshScope自动刷新
+
 
 ### Seata
 1. 集成seata
@@ -232,6 +252,54 @@
    >        1. 如拦截访问路径-Path：/say/**，转到uri：http://localhost:8081
    >        2. predicates内置有十多种拦截匹配规则：path，after，between，...
    >        3. filter内置几十种拦截过滤规则：
+
+
+
+
+
+### RocketMQ
+    参考sca官方示例
+    演示项目：springcloudalibaba-rocketmq-consume(消费方)、springcloudalibaba-rocketmq-produce(提供方)
+    网关：http://localhost:8190/say
+
+
+1. [下载启动RocketMQ 的 Name Server 和 Broker](https://archive.apache.org/dist/rocketmq/)，并解压
+    > 如：rocketmq-all-4.8.0-bin-release.zip
+
+
+
+2. 引入依赖
+
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-stream-rocketmq</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+3. 配置
+   * springcloudalibaba-rocketmq-consume
+        > src/main/resources/application.yml  #spring.cloud.stream: ...
+
+   * springcloudalibaba-rocketmq-produce
+        > src/main/resources/application.yml  #spring.cloud.stream: ...
+
+
+4. 发送与接收消息
+    * springcloudalibaba-rocketmq-consume
+        > org.my.demo.rockmq.MqReceiveService
+
+    * springcloudalibaba-rocketmq-produce
+        > org.my.demo.rocketmq.SenderService
+
+
 
 
 
